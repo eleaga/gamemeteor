@@ -1,0 +1,71 @@
+head
+	title Gamification
+	meta(name="viewport" content="width=device-width, initial-scale=1")
+	meta(charset="utf-8")
+	link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+body
+	+navBar
+	.container
+		+Router
+
+template(name="navBar")
+	nav.blue.darken-4
+		.nav-wrapper
+			a(href="#!").brand-logo Gamification
+			a(href="#" data-activates="mobile-demo").button-collapse: i.material-icons menu
+			ul.right.hide-on-med-and-down
+				li: a(href="/") Home
+				li: a(href="/add") Enviar Justeleca
+				li: a(href="/list") Minhas Justelecas
+				li: a(href="/logout") Deslogar
+			ul.side-nav#mobile-demo
+				li: a(href="/") Home
+				li: a(href="/add") Enviar Justeleca
+				li: a(href="/list") Minhas Justelecas
+				li: a(href="/logout") Deslogar
+
+template(name="home")
+	.row
+		.col.s12
+			h3.center-align Gamification
+			img.col.s12(src="/game.png")
+			p.center-align Bla bla bla. As averes somos nozes
+			p.center-align Such thing, not a chair.
+			a(href="/add").col.s12.waves-effect.waves-light.btn.blue.darken-4 Enviar uma Justeleca
+				i.material-icons.right send
+
+template(name="addCoin")
+	.row
+		h4.center-align Enviar Justeleca
+		form.col.s12#addCoin
+			.row
+				.input-field.col.s12
+					input#reciever.validate(type="email" name="reciever")
+					.emailList
+					label(for="reciever") E-mail
+				.input-field.col.s12
+					textarea#reason.materialize-textarea
+					label(for="reason") Motivo
+				.input-field.col.s12
+					button.waves-effect.waves-light.btn.blue.darken-4(type="submit" form="addCoin" value="submit") enviar
+						i.material-icons.right send
+
+template(name="listCoin")
+	.row
+		h4.center-align Minhas Justelecas
+		each justelecas
+			+justeleca
+
+template(name="justeleca")
+	.card.blue.darken-2.z-depth-1
+		.card-content.white-text
+			p De: #{sender}
+			p Motivo: #{reason}
+		.card-action.yellow-text
+			span {{prettifyDate timestamp}}
+
+template(name="logout")
+	h3 Deslogando...
+
+template(name="login")
+	+atForm
