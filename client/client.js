@@ -22,6 +22,27 @@ Template.listCoin.helpers({
 			var user = Meteor.user().emails[0].address;
 			return Justelecas.find({reciever: user}, {sort: {timestamp: -1}});
 		}
+	},
+	'count': function() {
+		if (Meteor.user()) {
+			var user = Meteor.user().emails[0].address;
+			return Justelecas.find({reciever: user}).count();
+		}
+	}
+});
+
+Template.listMe.helpers({
+	'justelecas': function() {
+		if (Meteor.user()) {
+			var user = Meteor.user().emails[0].address;
+			return Justelecas.find({sender: user}, {sort: {timestamp: -1}});
+		}
+	},
+	'count': function() {
+		if (Meteor.user()) {
+			var user = Meteor.user().emails[0].address;
+			return Justelecas.find({sender: user}).count();
+		}
 	}
 });
 
