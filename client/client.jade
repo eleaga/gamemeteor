@@ -77,3 +77,24 @@ template(name="listMe")
 		h4.center-align Justelecas enviadas #{count}
 		each justelecas
 			+justeleca
+
+
+template(name="registerUser")
+	.row
+		h4.center-align Registrar usuario
+		form.col.s12#registerUser
+			.row
+				.input-field.col.s12
+					input#reciever.validate(type="email" name="reciever")
+					.emailList
+					label(for="reciever") E-mail
+				.input-field.col.s12
+					input#reciever.validate(type="text" name="reciever")
+					.emailList
+					label(for="reciever") Nome
+				.input-field.col.s12
+					input#reciever.validate(type="password" name="reciever")
+					.emailList
+					label(for="reciever") Senha
+				.input-field.col.s12
+					button.waves-effect.waves-light.btn.blue.darken-4(type="submit" form="addCoin" value="submit") enviar

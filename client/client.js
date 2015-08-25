@@ -16,6 +16,13 @@ Template.logout.rendered = function () {
 	AccountsTemplates.logout();
 	Router.go('/');
 };
+
+Template.registerUser.helpers({
+	'registerUser': function() {
+		console.log('teste');
+	}
+});
+
 Template.listCoin.helpers({
 	'justelecas': function() {
 		if (Meteor.user()) {

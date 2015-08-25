@@ -27,3 +27,7 @@ Router.route('/logout', function() {
 	this.render('logout');
 
 });
+
+Router.route('/user/register', function() {
+	this.render('registerUser');
+});
