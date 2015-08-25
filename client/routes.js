@@ -28,6 +28,21 @@ Router.route('/logout', function() {
 
 });
 
-Router.route('/user/register', function() {
-	this.render('registerUser');
+
+Router.map(function() {
+  this.route('UserRegister', {
+    path: '/user/register',
+
+    onBeforeAction: function() {
+      user = Meteor.user();
+      if(!Roles.userIsInRole(user, ['admin'])) {
+        this.render('registerUser');
+        this.stop();
+        console.log('n eh');
+      	return false;
+      }
+        console.log('sim eh');
+      return true;
+    }
+  })
 });
